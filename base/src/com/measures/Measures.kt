@@ -13,16 +13,16 @@ interface UnitTypedFull<S, T : DoubleBase<S>> : DoubleBase<T> {
 }
 
 object Consts {
-    const val SEPTILLION = 10E24
-    const val SEXTILLION = 10E21
-    const val QUINTILLION = 10E18
-    const val QUADRILLION = 10E15
-    const val TRILLION = 10E12
-    const val BILLION = 10E9
-    const val MILLION = 10E6
-    const val THOUSAND = 10E3
-    const val HUNDRED = 10E2
-    const val TEN = 10E1
+    const val SEPTILLION = 1E24
+    const val SEXTILLION = 1E21
+    const val QUINTILLION = 1E18
+    const val QUADRILLION = 1E15
+    const val TRILLION = 1E12
+    const val BILLION = 1E9
+    const val MILLION = 1E6
+    const val THOUSAND = 1E3
+    const val HUNDRED = 1E2
+    const val TEN = 1E1
     const val TENTH = 1E-1
     const val HUNDREDTH = 1E-2
     const val THOUSANDTH = 1E-3

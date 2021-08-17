@@ -2,6 +2,10 @@ package com.measures.volume
 
 import com.measures.DoubleBase
 import com.measures.UnitTypedFull
+import com.measures.area.SquareMeters
+import com.measures.area.UnitAreaTypedFull
+import com.measures.distance.Meters
+import com.measures.distance.UnitDistanceTypedFull
 
 typealias UnitVolume<T> = UnitVolumeTypedFull<T, T>
 
@@ -12,11 +16,11 @@ interface UnitVolumeTypedFull<S, T : DoubleBase<S>> : UnitTypedFull<S, T> {
     operator fun minus(other: UnitVolumeTypedFull<*, *>) =
         Liters(this.toLiters().value - other.toLiters().value)
 
-    operator fun div(other: UnitVolumeTypedFull<*, *>) =
-        Liters(this.toLiters().value / other.toLiters().value)
+    operator fun div(other: UnitAreaTypedFull<*, *>) =
+        Meters(this.toLiters().value / other.toSquareMeters().value)
 
-    operator fun times(other: UnitVolumeTypedFull<*, *>) =
-        Liters(this.toLiters().value * other.toLiters().value)
+    operator fun div(other: UnitDistanceTypedFull<*, *>) =
+        SquareMeters(this.toLiters().value / other.toMeters().value)
 
     fun toLiters(): Liters
 }
