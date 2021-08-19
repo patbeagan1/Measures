@@ -12,5 +12,6 @@
     <orderEntry type="module" module-name="unit-metric" exported="" />
     <orderEntry type="module" module-name="unit-american-customary" exported="" />
     <orderEntry type="module" module-name="unit-english-imperial" exported="" />
+    <orderEntry type="module" module-name="unit-english-international" exported="" />
   </component>
 </module>

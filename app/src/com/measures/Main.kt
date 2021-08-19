@@ -1,30 +1,27 @@
 package com.measures
 
-import com.measures.americancustomary.distance.Foot
-import com.measures.americancustomary.distance.Inch
-import com.measures.americancustomary.distance.Mile
-import com.measures.americancustomary.distance.Pica
-import com.measures.americancustomary.distance.Point
-import com.measures.americancustomary.distance.Yard
-import com.measures.americancustomary.distance.nautical.Cable
-import com.measures.americancustomary.distance.nautical.Fathom
-import com.measures.americancustomary.distance.nautical.NauticalMile
-import com.measures.americancustomary.distance.survey.Furlong
-import com.measures.americancustomary.distance.survey.League
-import com.measures.americancustomary.distance.survey.SurveyChain
-import com.measures.americancustomary.distance.survey.SurveyFoot
-import com.measures.americancustomary.distance.survey.SurveyLink
-import com.measures.americancustomary.distance.survey.SurveyMile
-import com.measures.americancustomary.distance.survey.SurveyRod
-import com.measures.americancustomary.distance.toFoot
-import com.measures.americancustomary.distance.toInch
-import com.measures.americancustomary.distance.toMile
-import com.measures.americancustomary.distance.toYard
-import com.measures.americancustomary.volume.fluid.GallonUSAFluid
-import com.measures.americancustomary.volume.fluid.OunceUSAFluid
-import com.measures.americancustomary.volume.fluid.toGallonUSAFluid
 import com.measures.area.SquareMeters
+import com.measures.distance.Furlong
+import com.measures.distance.League
 import com.measures.distance.Meters
+import com.measures.distance.SurveyChain
+import com.measures.distance.SurveyFoot
+import com.measures.distance.SurveyLink
+import com.measures.distance.SurveyMile
+import com.measures.distance.SurveyRod
+import com.measures.englishinternational.distance.Foot
+import com.measures.englishinternational.distance.Inch
+import com.measures.englishinternational.distance.Mile
+import com.measures.englishinternational.distance.Pica
+import com.measures.englishinternational.distance.Point
+import com.measures.englishinternational.distance.Yard
+import com.measures.englishinternational.distance.nautical.Cable
+import com.measures.englishinternational.distance.nautical.Fathom
+import com.measures.englishinternational.distance.nautical.NauticalMile
+import com.measures.englishinternational.distance.toFoot
+import com.measures.englishinternational.distance.toInch
+import com.measures.englishinternational.distance.toMile
+import com.measures.englishinternational.distance.toYard
 import com.measures.metric.distance.Centimeter
 import com.measures.metric.distance.Kilometer
 import com.measures.metric.distance.asCentimeter
@@ -32,8 +29,12 @@ import com.measures.metric.distance.toKilometer
 import com.measures.metric.distance.toMillimeter
 import com.measures.metric.volume.Attoliter
 import com.measures.metric.volume.Milliliter
+import com.measures.metric.volume.toMegaliter
 import com.measures.metric.volume.toMilliliter
 import com.measures.volume.Liters
+import com.measures.volume.fluid.USFluidGallon
+import com.measures.volume.fluid.USFluidOunce
+import com.measures.volume.fluid.toUSFluidGallon
 import com.measures.volume.toOunceImperialFluid
 
 class Main {
@@ -56,18 +57,19 @@ class Main {
         (Capefeet(2.0) + Meters(6.0) - Inch(5.0)).toFoot(),
         Microns(20.0).toMillimeter(),
         SurveyMile(1.0).toMile(),
-        League(1.0).toKilometer().toMile()
+        League(1.0).toMile()
     ).map { it to it }
     private val volumes = listOf(
         Liters(4.0).toMilliliter() + Milliliter(6.0),
-        OunceUSAFluid(1.0).toOunceImperialFluid(),
-        GallonUSAFluid(1.0).toLiters(),
-        Attoliter(10000.0).toGallonUSAFluid(),
+        USFluidOunce(1.0).toOunceImperialFluid(),
+        USFluidGallon(1.0).toLiters(),
+        Attoliter(10000.0).toUSFluidGallon(),
     ).map { it to it }
     private val other = listOf(
         Meters(2.0) * Meters(2.0),
         SquareMeters(4.0) / Meters(2.0),
         SquareMeters(4.0) * Meters(2.0),
+        (Furlong(1.0) *Furlong(1.0) *Furlong(1.0) ).toMegaliter()
     ).map { it to it }
 
     fun run() {
