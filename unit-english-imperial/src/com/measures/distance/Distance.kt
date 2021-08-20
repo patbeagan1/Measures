@@ -38,7 +38,7 @@ value class ImperialHand(override val value: Double) : UnitDistance<ImperialHand
 @JvmInline
 value class ImperialFoot(override val value: Double) : UnitDistance<ImperialFoot> {
     override fun asType(d: Double) = ImperialFoot(d)
-    override fun asBaseUnit() = _root_ide_package_.com.measures.distance.Meter(this.value * 0.3048).asBaseUnit()
+    override fun asBaseUnit() = Meter(this.value * 0.3048).asBaseUnit()
 }
 
 @JvmInline
