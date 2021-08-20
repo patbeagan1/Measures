@@ -10,5 +10,4 @@ value class Millimeter(override val value: Double) : UnitDistance<Millimeter> {
     override fun toMeters() = Meters(value * Consts.MILLI)
 }
 
-fun Meters.asMillimeter() = toUnit(Millimeter(1.0))
-fun UnitDistance<*>.toMillimeter() = toMeters().asMillimeter()
+fun UnitDistance<*>.toMillimeter() = toMeters().toUnit(Millimeter(1.0))

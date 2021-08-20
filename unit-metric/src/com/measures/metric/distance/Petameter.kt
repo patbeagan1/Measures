@@ -10,5 +10,4 @@ value class Petameter(override val value: Double) : UnitDistance<Petameter> {
     override fun toMeters() = Meters(value * Consts.PETA)
 }
 
-fun Meters.asPetameter() = toUnit(Petameter(1.0))
-fun UnitDistance<*>.toPetameter() = toMeters().asPetameter()
+fun UnitDistance<*>.toPetameter() = toMeters().toUnit(Petameter(1.0))

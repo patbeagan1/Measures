@@ -7,3 +7,5 @@ value class USFluidOunce(override val value: Double) : UnitVolume<USFluidOunce> 
     override fun asType(d: Double) = USFluidOunce(d);
     override fun toLiters() = USCup(value / 8.0).toLiters()
 }
+
+fun UnitVolume<*>.toUSFluidOunce() = toLiters().toUnit(USFluidOunce(1.0))

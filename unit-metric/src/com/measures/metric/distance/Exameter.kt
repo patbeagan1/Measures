@@ -10,5 +10,4 @@ value class Exameter(override val value: Double) : UnitDistance<Exameter> {
     override fun toMeters() = Meters(value * Consts.EXA)
 }
 
-fun Meters.asExameter() = toUnit(Exameter(1.0))
-fun UnitDistance<*>.toExameter() = toMeters().asExameter()
+fun UnitDistance<*>.toExameter() = toMeters().toUnit(Exameter(1.0))

@@ -10,5 +10,4 @@ value class Gigameter(override val value: Double) : UnitDistance<Gigameter> {
     override fun toMeters() = Meters(value * Consts.GIGA)
 }
 
-fun Meters.asGigameter() = toUnit(Gigameter(1.0))
-fun UnitDistance<*>.toGigameter() = toMeters().asGigameter()
+fun UnitDistance<*>.toGigameter() = toMeters().toUnit(Gigameter(1.0))

@@ -10,5 +10,4 @@ value class Nanometer(override val value: Double) : UnitDistance<Nanometer> {
     override fun toMeters() = Meters(value * Consts.NANO)
 }
 
-fun Meters.asNanometer() = toUnit(Nanometer(1.0))
-fun UnitDistance<*>.toNanometer() = toMeters().asNanometer()
+fun UnitDistance<*>.toNanometer() = toMeters().toUnit(Nanometer(1.0))

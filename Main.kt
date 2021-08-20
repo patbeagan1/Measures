@@ -1,6 +1,6 @@
-import com.measures.Main
+import com.measures.Runtime
 
 fun main() {
-    val a = Main()
+    val a = Runtime()
     a.run()
 }

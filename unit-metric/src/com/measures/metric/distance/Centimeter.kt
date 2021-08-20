@@ -10,5 +10,4 @@ value class Centimeter(override val value: Double) : UnitDistance<Centimeter> {
     override fun toMeters() = Meters(value * Consts.CENTI)
 }
 
-fun Meters.asCentimeter() = toUnit(Centimeter(1.0))
-fun UnitDistance<*>.toCentimeter() = toMeters().asCentimeter()
+fun UnitDistance<*>.toCentimeter() = toMeters().toUnit(Centimeter(1.0))

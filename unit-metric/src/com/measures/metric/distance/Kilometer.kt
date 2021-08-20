@@ -10,5 +10,4 @@ value class Kilometer(override val value: Double) : UnitDistance<Kilometer> {
     override fun toMeters() = Meters(value * Consts.KILO)
 }
 
-fun Meters.asKilometer() = toUnit(Kilometer(1.0))
-fun UnitDistance<*>.toKilometer() = toMeters().asKilometer()
+fun UnitDistance<*>.toKilometer() = toMeters().toUnit(Kilometer(1.0))

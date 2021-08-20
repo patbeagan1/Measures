@@ -10,5 +10,4 @@ value class Yottameter(override val value: Double) : UnitDistance<Yottameter> {
     override fun toMeters() = Meters(value * Consts.YOTTA)
 }
 
-fun Meters.asYottameter() = toUnit(Yottameter(1.0))
-fun UnitDistance<*>.toYottameter() = toMeters().asYottameter()
+fun UnitDistance<*>.toYottameter() = toMeters().toUnit(Yottameter(1.0))

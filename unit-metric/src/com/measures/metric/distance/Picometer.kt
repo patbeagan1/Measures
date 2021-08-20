@@ -10,5 +10,4 @@ value class Picometer(override val value: Double) : UnitDistance<Picometer> {
     override fun toMeters() = Meters(value * Consts.PICO)
 }
 
-fun Meters.asPicometer() = toUnit(Picometer(1.0))
-fun UnitDistance<*>.toPicometer() = toMeters().asPicometer()
+fun UnitDistance<*>.toPicometer() = toMeters().toUnit(Picometer(1.0))

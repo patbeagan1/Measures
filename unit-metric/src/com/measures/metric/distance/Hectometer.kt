@@ -10,5 +10,4 @@ value class Hectometer(override val value: Double) : UnitDistance<Hectometer> {
     override fun toMeters() = Meters(value * Consts.HECTO)
 }
 
-fun Meters.asHectometer() = toUnit(Hectometer(1.0))
-fun UnitDistance<*>.toHectometer() = toMeters().asHectometer()
+fun UnitDistance<*>.toHectometer() = toMeters().toUnit(Hectometer(1.0))

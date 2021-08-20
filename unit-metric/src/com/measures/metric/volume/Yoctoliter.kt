@@ -1,14 +1,13 @@
 package com.measures.metric.volume
 
 import com.measures.Consts
-import com.measures.volume.Liters
+import com.measures.volume.Liter
 import com.measures.volume.UnitVolume
 
 @JvmInline
 value class Yoctoliter(override val value: Double) : UnitVolume<Yoctoliter> {
     override fun asType(d: Double) = Yoctoliter(d);
-    override fun toLiters() = Liters(value * Consts.YOCTO)
+    override fun toLiters() = Liter(value * Consts.YOCTO)
 }
 
-fun Liters.asYoctoliter() = toUnit(Yoctoliter(1.0))
-fun UnitVolume<*>.toYoctoliter() = toLiters().asYoctoliter()
+fun UnitVolume<*>.toYoctoliter() = toLiters().toUnit(Yoctoliter(1.0))

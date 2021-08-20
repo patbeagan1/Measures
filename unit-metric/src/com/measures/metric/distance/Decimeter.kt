@@ -10,5 +10,4 @@ value class Decimeter(override val value: Double) : UnitDistance<Decimeter> {
     override fun toMeters() = Meters(value * Consts.DECI)
 }
 
-fun Meters.asDecimeter() = toUnit(Decimeter(1.0))
-fun UnitDistance<*>.toDecimeter() = toMeters().asDecimeter()
+fun UnitDistance<*>.toDecimeter() = toMeters().toUnit(Decimeter(1.0))

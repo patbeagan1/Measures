@@ -10,5 +10,4 @@ value class Attometer(override val value: Double) : UnitDistance<Attometer> {
     override fun toMeters() = Meters(value * Consts.ATTO)
 }
 
-fun Meters.asAttometer() = toUnit(Attometer(1.0))
-fun UnitDistance<*>.toAttometer() = toMeters().asAttometer()
+fun UnitDistance<*>.toAttometer() = toMeters().toUnit(Attometer(1.0))

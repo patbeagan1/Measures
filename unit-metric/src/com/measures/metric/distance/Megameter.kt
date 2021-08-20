@@ -10,5 +10,4 @@ value class Megameter(override val value: Double) : UnitDistance<Megameter> {
     override fun toMeters() = Meters(value * Consts.MEGA)
 }
 
-fun Meters.asMegameter() = toUnit(Megameter(1.0))
-fun UnitDistance<*>.toMegameter() = toMeters().asMegameter()
+fun UnitDistance<*>.toMegameter() = toMeters().toUnit(Megameter(1.0))

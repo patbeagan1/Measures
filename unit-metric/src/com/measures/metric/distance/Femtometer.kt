@@ -10,5 +10,4 @@ value class Femtometer(override val value: Double) : UnitDistance<Femtometer> {
     override fun toMeters() = Meters(value * Consts.FEMTO)
 }
 
-fun Meters.asFemtometer() = toUnit(Femtometer(1.0))
-fun UnitDistance<*>.toFemtometer() = toMeters().asFemtometer()
+fun UnitDistance<*>.toFemtometer() = toMeters().toUnit(Femtometer(1.0))

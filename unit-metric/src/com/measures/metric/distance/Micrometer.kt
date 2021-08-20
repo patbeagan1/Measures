@@ -10,5 +10,4 @@ value class Micrometer(override val value: Double) : UnitDistance<Micrometer> {
     override fun toMeters() = Meters(value * Consts.MICRO)
 }
 
-fun Meters.asMicrometer() = toUnit(Micrometer(1.0))
-fun UnitDistance<*>.toMicrometer() = toMeters().asMicrometer()
+fun UnitDistance<*>.toMicrometer() = toMeters().toUnit(Micrometer(1.0))

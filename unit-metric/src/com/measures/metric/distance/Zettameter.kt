@@ -10,5 +10,4 @@ value class Zettameter(override val value: Double) : UnitDistance<Zettameter> {
     override fun toMeters() = Meters(value * Consts.ZETTA)
 }
 
-fun Meters.asZettameter() = toUnit(Zettameter(1.0))
-fun UnitDistance<*>.toZettameter() = toMeters().asZettameter()
+fun UnitDistance<*>.toZettameter() = toMeters().toUnit(Zettameter(1.0))

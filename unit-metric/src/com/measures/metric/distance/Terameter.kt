@@ -10,5 +10,4 @@ value class Terameter(override val value: Double) : UnitDistance<Terameter> {
     override fun toMeters() = Meters(value * Consts.TERA)
 }
 
-fun Meters.asTerameter() = toUnit(Terameter(1.0))
-fun UnitDistance<*>.toTerameter() = toMeters().asTerameter()
+fun UnitDistance<*>.toTerameter() = toMeters().toUnit(Terameter(1.0))
