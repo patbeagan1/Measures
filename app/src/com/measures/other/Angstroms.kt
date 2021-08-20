@@ -1,13 +1,10 @@
 package com.measures.other
 
-import com.measures.imperial.distance.Meters
-import com.measures.imperial.distance.UnitDistance
-
 @JvmInline
-value class Angstroms(override val value: Double) : UnitDistance<Angstroms> {
+value class Angstroms(override val value: Double) : com.measures.distance.UnitDistance<Angstroms> {
     override fun asType(d: Double) = Angstroms(d)
-    override fun asBaseUnit() = Meters(this.value * 1E-10)
+    override fun asBaseUnit() = com.measures.distance.Meter(this.value * 1E-10)
 }
 
-fun Meters.asAngstroms() = toUnit(Angstroms(1.0))
-fun UnitDistance<*>.toAngstroms() = asBaseUnit().asAngstroms()
+fun com.measures.distance.Meter.asAngstroms() = toUnit(Angstroms(1.0))
+fun com.measures.distance.UnitDistance<*>.toAngstroms() = asBaseUnit().asAngstroms()
