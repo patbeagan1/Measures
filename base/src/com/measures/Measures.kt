@@ -1,15 +1,21 @@
 package com.measures
 
-interface DoubleBase<T> {
+interface DoubleBase {
     val value: Double
-    fun asType(d: Double): T
 }
 
-interface UnitTypedFull<S, T : DoubleBase<S>> : DoubleBase<T> {
+interface BaseUnit : DoubleBase {
+    fun <R, B : DoubleBase, T : UnitTypedFull<R, B>> toUnitInternal(u: T): R = u.asType(this.value / u.asBaseUnit().value)
+}
+
+interface UnitTypedFull<T : DoubleBase, S : BaseUnit> : DoubleBase {
     operator fun plus(other: T) = asType(this.value + other.value)
     operator fun minus(other: T) = asType(this.value - other.value)
     operator fun times(other: Double) = asType(this.value * other)
     operator fun div(other: Double) = asType(this.value / other)
+    fun asBaseUnit(): S
+    fun asType(d: Double): T
+    fun <B : DoubleBase, V, U : UnitTypedFull<V, B>> toUnit(t: U): V = asBaseUnit().toUnitInternal(t)
 }
 
 object Consts {

@@ -1,12 +1,12 @@
 package com.measures.other
 
-import com.measures.distance.Meters
-import com.measures.distance.UnitDistance
+import com.measures.imperial.distance.Meters
+import com.measures.imperial.distance.UnitDistance
 
 @JvmInline
 value class Microns(override val value: Double) : UnitDistance<Microns> {
     override fun asType(d: Double) = Microns(d)
-    override fun toMeters() = Meters(this.value * 0.000001)
+    override fun asBaseUnit() = Meters(this.value * 0.000001)
 }
 
-fun UnitDistance<*>.toMicrons() = toMeters().toUnit(Microns(1.0))
+fun UnitDistance<*>.toMicrons() = toUnit(Microns(1.0))

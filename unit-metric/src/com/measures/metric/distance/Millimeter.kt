@@ -1,13 +1,13 @@
 package com.measures.metric.distance
 
 import com.measures.Consts
-import com.measures.distance.Meters
-import com.measures.distance.UnitDistance
+import com.measures.imperial.distance.Meters
+import com.measures.imperial.distance.UnitDistance
 
 @JvmInline
 value class Millimeter(override val value: Double) : UnitDistance<Millimeter> {
     override fun asType(d: Double) = Millimeter(d);
-    override fun toMeters() = Meters(value * Consts.MILLI)
+    override fun asBaseUnit() = Meters(value * Consts.MILLI)
 }
 
-fun UnitDistance<*>.toMillimeter() = toMeters().toUnit(Millimeter(1.0))
+fun UnitDistance<*>.toMillimeter() = toUnit(Millimeter(1.0))

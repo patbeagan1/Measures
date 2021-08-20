@@ -1,12 +1,12 @@
 package com.measures.other
 
-import com.measures.volume.Liter
-import com.measures.volume.UnitVolume
+import com.measures.imperial.volume.Liter
+import com.measures.imperial.volume.UnitVolume
 
 @JvmInline
 value class TeaspoonCanadian(override val value: Double) : UnitVolume<TeaspoonCanadian> {
     override fun asType(d: Double) = TeaspoonCanadian(d)
-    override fun toLiters() = Liter(value * 4.73551E-06 * 1000)
+    override fun asBaseUnit() = Liter(value * 4.73551E-06 * 1000)
 }
 
-fun UnitVolume<*>.toTeaspoonCanadian() = toLiters().toUnit(TeaspoonCanadian(1.0))
+fun UnitVolume<*>.toTeaspoonCanadian() = toUnit(TeaspoonCanadian(1.0))

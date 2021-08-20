@@ -1,14 +1,21 @@
 package com.measures
-
+//import com.measures.imperial.distance.toImperialHand
 import com.measures.area.SquareMeters
-import com.measures.distance.Meters
-import com.measures.distance.SurveyChain
-import com.measures.distance.SurveyFoot
-import com.measures.distance.SurveyFurlong
-import com.measures.distance.SurveyLeague
-import com.measures.distance.SurveyLink
-import com.measures.distance.SurveyMile
-import com.measures.distance.SurveyRod
+import com.measures.imperial.distance.Meters
+import com.measures.imperial.distance.SurveyChain
+import com.measures.imperial.distance.SurveyFoot
+import com.measures.imperial.distance.SurveyFurlong
+import com.measures.imperial.distance.SurveyLeague
+import com.measures.imperial.distance.SurveyLink
+import com.measures.imperial.distance.SurveyMile
+import com.measures.imperial.distance.SurveyRod
+import com.measures.imperial.volume.ImperialGallon
+import com.measures.imperial.volume.Liter
+import com.measures.imperial.volume.fluid.USFluidGallon
+import com.measures.imperial.volume.fluid.USFluidOunce
+import com.measures.imperial.volume.fluid.toUSFluidGallon
+import com.measures.imperial.volume.toImperialFluidOunce
+import com.measures.imperial.volume.toLiter
 import com.measures.international.distance.InternationalFoot
 import com.measures.international.distance.InternationalInch
 import com.measures.international.distance.InternationalMile
@@ -33,25 +40,20 @@ import com.measures.metric.volume.toMilliliter
 import com.measures.other.Capefeet
 import com.measures.other.Microns
 import com.measures.other.toCapefeet
-import com.measures.volume.Liter
-import com.measures.volume.fluid.USFluidGallon
-import com.measures.volume.fluid.USFluidOunce
-import com.measures.volume.fluid.toUSFluidGallon
-import com.measures.volume.toImperialFluidOunce
 
 class Runtime {
     private val distances = listOf(
         Meters(1.0) + Meters(2.0),
 //    Meters(1.0) / Meters(2.0),
-        Kilometer(3.0).toMeters().toInternationalInch(),
+        Kilometer(3.0).asBaseUnit().toInternationalInch(),
         Centimeter(200.0) - Centimeter(1.0),
         Kilometer(1.0) + Meters(1.0),
         (Kilometer(1.0) + Meters(1.0)).toKilometer(),
         Meters(2.5).toUnit(Centimeter(1.0)),
-        InternationalInch(4.0).toMeters().toInternationalInch(),
+        InternationalInch(4.0).asBaseUnit().toInternationalInch(),
         Centimeter(4.0).toInternationalInch(),
         Centimeter(2.54).toInternationalInch(),
-        InternationalInch(400.0).toMeters().toKilometer(),
+        InternationalInch(400.0).asBaseUnit().toKilometer(),
         InternationalFoot(1.0).toInternationalInch(),
         InternationalFoot(3.0).toInternationalYard(),
         (SquareMeters(1.0) / InternationalFoot(1.0)).toInternationalYard(),
@@ -59,13 +61,16 @@ class Runtime {
         (Capefeet(2.0) + Meters(6.0) - InternationalInch(5.0)).toInternationalFoot(),
         Microns(20.0).toMillimeter(),
         SurveyMile(1.0).toInternationalMile(),
-        SurveyLeague(1.0).toInternationalMile()
+        SurveyLeague(1.0).toInternationalMile(),
+//        ImperialInch(2.0).toImperialHand()
     ).map { it to it }
     private val volumes = listOf(
         Liter(4.0).toMilliliter() + Milliliter(6.0),
         USFluidOunce(1.0).toImperialFluidOunce(),
-        USFluidGallon(1.0).toLiters(),
+        USFluidGallon(1.0).toLiter(),
         Attoliter(10000.0).toUSFluidGallon(),
+        ImperialGallon(1.0).toUSFluidGallon(),
+        Liter(1.0).toUSFluidGallon()
     ).map { it to it }
     private val other = listOf(
         Meters(2.0) * Meters(2.0),
@@ -97,7 +102,7 @@ class Runtime {
             InternationalCable(1.0),
             InternationalNauticalMile(1.0),
         ).map {
-            it to it.toMeters()
+            it to it.asBaseUnit()
         }.sortedBy {
             it.second.value
         }.printNumbered()
