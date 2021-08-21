@@ -9,6 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="KotlinJavaRuntime (6)" level="project" />
     <orderEntry type="module" module-name="base" />
-    <orderEntry type="module" module-name="unit-english-international" />
+    <orderEntry type="module" module-name="unit-english-international" exported="" />
+    <orderEntry type="module" module-name="unit-weight-avoirdupois" exported="" />
   </component>
 </module>

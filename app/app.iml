@@ -13,5 +13,6 @@
     <orderEntry type="module" module-name="unit-american-customary" exported="" />
     <orderEntry type="module" module-name="unit-english-imperial" exported="" />
     <orderEntry type="module" module-name="unit-english-international" exported="" />
+    <orderEntry type="module" module-name="unit-weight-troy" />
   </component>
 </module>

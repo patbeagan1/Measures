@@ -1,4 +1,5 @@
 package com.measures
+
 import InternationalCable
 import InternationalFathom
 import InternationalNauticalMile
@@ -38,6 +39,14 @@ import com.measures.volume.fluid.USFluidOunce
 import com.measures.volume.fluid.toUSFluidGallon
 import com.measures.volume.toImperialFluidOunce
 import com.measures.volume.toLiter
+import com.measures.weight.Gram
+import com.measures.weight.Pound
+import com.measures.weight.TroyPennyweight
+import com.measures.weight.TroyPound
+import com.measures.weight.toGrain
+import com.measures.weight.toGram
+import com.measures.weight.toOunce
+import com.measures.weight.toPound
 
 class Runtime {
     private val distances = listOf(
@@ -98,11 +107,22 @@ class Runtime {
             SurveyLeague(1.0),
             InternationalFathom(1.0),
             InternationalCable(1.0),
-            InternationalNauticalMile(1.0),
+            InternationalNauticalMile(1.0)
         ).map {
             it to it.asBaseUnit()
         }.sortedBy {
             it.second.value
+        }.printNumbered()
+
+        listOf(
+            Gram(1.0).toGrain(),
+            Pound(1.0).toOunce(),
+            TroyPound(1.0).toPound(),
+            TroyPennyweight(1.0)
+        ).map {
+            it to it
+        }.sortedBy {
+            it.second.toGram().value
         }.printNumbered()
     }
 
